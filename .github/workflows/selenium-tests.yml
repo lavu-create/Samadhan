@@ -35,8 +35,8 @@ jobs:
 
       # Wait for backend (PORT 5001)
       - name: Wait for backend
-        run: npx wait-on http://127.0.0.1:5001/api
-
+        run: npx wait-on http://127.0.0.1:5001/api/auth/me
+        
       # Start frontend
       - name: Start frontend
         working-directory: frontend-new
