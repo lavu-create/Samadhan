@@ -31,6 +31,12 @@ jobs:
       # Start backend
       - name: Start backend
         working-directory: backend
+        env:
+          PORT: ${{ secrets.PORT }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          JWT_REFRESH_SECRET: ${{ secrets.JWT_REFRESH_SECRET }}
+          NODE_ENV: test
         run: npm start &
 
       # Wait for backend (PORT 5001)
