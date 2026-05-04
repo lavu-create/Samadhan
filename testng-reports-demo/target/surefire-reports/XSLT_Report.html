@@ -1,0 +1,229 @@
+<html lang="en">
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Samadhaan &mdash; TestNG XSLT Report</title>
+        <style>
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+          font-family: 'Segoe UI', Arial, sans-serif;
+          background: #0f172a;
+          color: #e2e8f0;
+          padding: 32px 24px;
+          min-height: 100vh;
+          line-height: 1.5;
+        }
+
+        /* ── Header ── */
+        .header {
+          background: linear-gradient(135deg, #1e3a5f 0%, #0e4d91 100%);
+          border-radius: 12px;
+          padding: 28px 32px;
+          margin-bottom: 32px;
+          border: 1px solid #1d4ed8;
+          box-shadow: 0 4px 24px rgba(14, 165, 233, 0.2);
+        }
+        .header h1 {
+          font-size: 26px;
+          font-weight: 800;
+          color: #38bdf8;
+          letter-spacing: -0.5px;
+          margin-bottom: 4px;
+        }
+        .header p { color: #94a3b8; font-size: 13px; }
+        .header .meta { color: #64748b; font-size: 12px; margin-top: 8px; }
+
+        /* ── Summary Cards ── */
+        .summary {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          margin-bottom: 32px;
+        }
+        .card {
+          flex: 1;
+          min-width: 150px;
+          background: #1e293b;
+          border-radius: 10px;
+          padding: 20px 24px;
+          border: 1px solid #334155;
+          text-align: center;
+        }
+        .card .label {
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: #64748b;
+          margin-bottom: 10px;
+        }
+        .card .value { font-size: 42px; font-weight: 900; line-height: 1; }
+        .card.total  .value { color: #38bdf8; }
+        .card.passed .value { color: #22c55e; }
+        .card.failed .value { color: #ef4444; }
+        .card.skip   .value { color: #f59e0b; }
+
+        /* ── Section heading ── */
+        h2 {
+          font-size: 16px;
+          font-weight: 700;
+          color: #94a3b8;
+          margin-bottom: 14px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #334155;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+        }
+
+        /* ── Table ── */
+        .table-wrap {
+          overflow-x: auto;
+          margin-bottom: 36px;
+          border-radius: 10px;
+          border: 1px solid #334155;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          background: #1e293b;
+        }
+        thead tr { background: #0f172a; }
+        th {
+          padding: 11px 16px;
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          color: #64748b;
+          text-align: left;
+          border-bottom: 2px solid #334155;
+          white-space: nowrap;
+        }
+        td {
+          padding: 11px 16px;
+          font-size: 13px;
+          color: #cbd5e1;
+          border-bottom: 1px solid #263347;
+          vertical-align: top;
+          word-break: break-word;
+        }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: #243249; transition: background 0.15s; }
+
+        /* ── Status Badges ── */
+        .badge {
+          display: inline-block;
+          padding: 2px 10px;
+          border-radius: 999px;
+          font-size: 10px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+        .pass { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid #22c55e; }
+        .fail { background: rgba(239,68,68,0.12);  color: #ef4444; border: 1px solid #ef4444; }
+        .skip { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid #f59e0b; }
+
+        /* ── Exception block ── */
+        .exception-msg {
+          font-size: 12px;
+          color: #fca5a5;
+          background: rgba(239,68,68,0.07);
+          border: 1px solid rgba(239,68,68,0.25);
+          border-radius: 6px;
+          padding: 8px 12px;
+          margin-top: 4px;
+          white-space: pre-wrap;
+          word-break: break-word;
+        }
+
+        /* ── Footer ── */
+        .footer {
+          text-align: center;
+          color: #475569;
+          font-size: 12px;
+          margin-top: 12px;
+          padding-top: 16px;
+          border-top: 1px solid #1e293b;
+        }
+      </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>▶ Samadhaan &mdash; TestNG XSLT Report</h1>
+            <p>Automated UI test results for the Samadhaan Complaint Management System</p>
+            <p class="meta">
+          Suite: Samadhaan TestNG Suite &nbsp;|&nbsp;
+          Duration: 8465 ms &nbsp;|&nbsp;
+          Started: 2026-05-04T07:23:22 IST</p>
+        </div>
+        <div class="summary">
+            <div class="card total">
+                <div class="label">Total Tests</div>
+                <div class="value">5</div>
+            </div>
+            <div class="card passed">
+                <div class="label">Passed</div>
+                <div class="value">4</div>
+            </div>
+            <div class="card failed">
+                <div class="label">Failed</div>
+                <div class="value">1</div>
+            </div>
+            <div class="card skip">
+                <div class="label">Skipped</div>
+                <div class="value">0</div>
+            </div>
+        </div>
+        <h2>Test Results</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th><th>Test Method</th><th>Class</th><th>Description</th><th>Duration (ms)</th><th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td><td>testHomepageLoads</td><td>com.samadhaan.SamadhaanTest</td><td>TC-01: Homepage loads and contains 'Samadhaan' in page source</td><td>729 ms</td><td><span class="badge pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td><td>testLoginPageRenders</td><td>com.samadhaan.SamadhaanTest</td><td>TC-02: Login page renders with email field visible</td><td>1608 ms</td><td><span class="badge pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td><td>testDashboardRedirectsToLogin</td><td>com.samadhaan.SamadhaanTest</td><td>TC-03: /dashboard redirects unauthenticated users to /login</td><td>2067 ms</td><td><span class="badge pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>testProfileRedirectsToLogin</td><td>com.samadhaan.SamadhaanTest</td><td>TC-04: /profile redirects unauthenticated users to /login</td><td>2077 ms</td><td><span class="badge pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>5</td><td>testIntentionalFailForDemoReport</td><td>com.samadhaan.SamadhaanTest</td><td>TC-05: [DEMO FAIL] Intentional failure for report demonstration</td><td>0 ms</td><td><span class="badge fail">FAIL</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2>Failure Details</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Method</th><th>Exception Class</th><th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>testIntentionalFailForDemoReport</td><td>java.lang.AssertionError</td><td>
+                            <div class="exception-msg">DEMO: This failure is intentional to show FAIL status in TestNG emailable and XSLT reports.</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+        Generated by TestNG + ANT XSLT Transform &mdash; Samadhaan Complaint Management System
+      </div>
+    </body>
+</html>

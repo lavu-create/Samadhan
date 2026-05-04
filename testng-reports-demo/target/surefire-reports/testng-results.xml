@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="4" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-05-04T07:23:22 IST" name="Samadhaan TestNG Suite" finished-at="2026-05-04T07:23:31 IST" duration-ms="8465">
+    <groups>
+    </groups>
+    <test started-at="2026-05-04T07:23:22 IST" name="Samadhaan UI Tests" finished-at="2026-05-04T07:23:31 IST" duration-ms="8465">
+      <class name="com.samadhaan.SamadhaanTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.samadhaan.SamadhaanTest@6b26e945]" started-at="2026-05-04T07:23:22 IST" name="setUp" finished-at="2026-05-04T07:23:24 IST" duration-ms="1872" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testHomepageLoads()[pri:1, instance:com.samadhaan.SamadhaanTest@6b26e945]" started-at="2026-05-04T07:23:24 IST" name="testHomepageLoads" description="TC-01: Homepage loads and contains &#039;Samadhaan&#039; in page source" finished-at="2026-05-04T07:23:25 IST" duration-ms="729" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testHomepageLoads -->
+        <test-method signature="testLoginPageRenders()[pri:2, instance:com.samadhaan.SamadhaanTest@6b26e945]" started-at="2026-05-04T07:23:25 IST" name="testLoginPageRenders" description="TC-02: Login page renders with email field visible" finished-at="2026-05-04T07:23:26 IST" duration-ms="1608" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginPageRenders -->
+        <test-method signature="testDashboardRedirectsToLogin()[pri:3, instance:com.samadhaan.SamadhaanTest@6b26e945]" started-at="2026-05-04T07:23:26 IST" name="testDashboardRedirectsToLogin" description="TC-03: /dashboard redirects unauthenticated users to /login" finished-at="2026-05-04T07:23:28 IST" duration-ms="2067" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDashboardRedirectsToLogin -->
+        <test-method signature="testProfileRedirectsToLogin()[pri:4, instance:com.samadhaan.SamadhaanTest@6b26e945]" started-at="2026-05-04T07:23:28 IST" name="testProfileRedirectsToLogin" description="TC-04: /profile redirects unauthenticated users to /login" finished-at="2026-05-04T07:23:31 IST" duration-ms="2077" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProfileRedirectsToLogin -->
+        <test-method signature="testIntentionalFailForDemoReport()[pri:5, instance:com.samadhaan.SamadhaanTest@6b26e945]" started-at="2026-05-04T07:23:31 IST" name="testIntentionalFailForDemoReport" description="TC-05: [DEMO FAIL] Intentional failure for report demonstration" finished-at="2026-05-04T07:23:31 IST" duration-ms="0" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[DEMO: This failure is intentional to show FAIL status in TestNG emailable and XSLT reports.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: DEMO: This failure is intentional to show FAIL status in TestNG emailable and XSLT reports.
+at org.testng.Assert.fail(Assert.java:111)
+at com.samadhaan.SamadhaanTest.testIntentionalFailForDemoReport(SamadhaanTest.java:149)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testIntentionalFailForDemoReport -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.samadhaan.SamadhaanTest@6b26e945]" started-at="2026-05-04T07:23:31 IST" name="tearDown" finished-at="2026-05-04T07:23:31 IST" duration-ms="92" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.samadhaan.SamadhaanTest -->
+    </test> <!-- Samadhaan UI Tests -->
+  </suite> <!-- Samadhaan TestNG Suite -->
+</testng-results>

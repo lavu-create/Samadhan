@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  testng.xml
+  ──────────
+  TestNG suite definition for the Samadhaan complaint management system demo.
+
+  Run with Maven:  mvn test
+  Reports are generated in:  test-output/
+    - emailable-report.html   (Emailable Report)
+    - index.html              (Full Index Report)
+-->
+<suite name="Samadhaan TestNG Suite" verbose="2">
+
+    <test name="Samadhaan UI Tests">
+        <classes>
+            <class name="com.samadhaan.SamadhaanTest"/>
+        </classes>
+    </test>
+
+</suite>

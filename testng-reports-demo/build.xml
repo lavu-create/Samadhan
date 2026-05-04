@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  build.xml
+  ─────────
+  ANT build file for generating a custom XSLT report from TestNG results.
+
+  Prerequisites:
+    1. Run the TestNG/Maven tests first so test-output/testng-results.xml exists.
+       Command:  mvn test   (from this directory)
+
+    2. Have ANT installed:
+       Mac:    brew install ant
+       Ubuntu: sudo apt install ant
+
+  Run XSLT report:
+    ant report
+
+  Output:  test-output/XSLT_Report.html
+-->
+<project name="SamadhaanTestNGReport" default="report" basedir=".">
+
+    <description>
+        ANT build file to generate XSLT HTML report from TestNG results.
+    </description>
+
+    <!-- ── Properties ─────────────────────────────────────────────────────── -->
+    <property name="testng.results.dir"  value="${basedir}/target/surefire-reports"/>
+    <property name="testng.results.xml"  value="${testng.results.dir}/testng-results.xml"/>
+    <property name="xslt.stylesheet"     value="${basedir}/testng-results.xsl"/>
+    <property name="xslt.output.file"    value="${testng.results.dir}/XSLT_Report.html"/>
+
+    <!-- ── Default target: generate XSLT report ───────────────────────────── -->
+    <target name="report" description="Generate XSLT HTML report from testng-results.xml">
+
+        <echo message="[ANT] Generating XSLT report..."/>
+        <echo message="      Input  : ${testng.results.xml}"/>
+        <echo message="      Style  : ${xslt.stylesheet}"/>
+        <echo message="      Output : ${xslt.output.file}"/>
+
+        <!-- Check that testng-results.xml exists -->
+        <available file="${testng.results.xml}" property="results.exists"/>
+        <fail unless="results.exists"
+              message="ERROR: ${testng.results.xml} not found. Run 'mvn test' first."/>
+
+        <!-- Apply the XSL transformation -->
+        <xslt in="${testng.results.xml}"
+              style="${xslt.stylesheet}"
+              out="${xslt.output.file}"
+              force="true"/>
+
+        <echo message="[ANT] XSLT Report generated: ${xslt.output.file}"/>
+        <echo message="[ANT] Open it in a browser to view the styled report."/>
+
+    </target>
+
+    <!-- ── Clean target ───────────────────────────────────────────────────── -->
+    <target name="clean" description="Delete generated XSLT report">
+        <delete file="${xslt.output.file}" quiet="true"/>
+        <echo message="[ANT] Cleaned generated report."/>
+    </target>
+
+</project>
