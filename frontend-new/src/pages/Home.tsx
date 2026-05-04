@@ -73,7 +73,7 @@ const toEmbedUrl = (lat: number, lon: number) => {
 const toMapLink = (lat: number, lon: number) =>
   `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=17/${lat}/${lon}`;
 
-const heroImage = '/campus.jpeg';
+const heroImage = `${import.meta.env.BASE_URL}campus.jpeg`;
 
 const Home: React.FC = () => {
   const { user } = useAuth();
