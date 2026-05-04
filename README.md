@@ -1,132 +1,369 @@
-# 📋 Samadhaan - Digital Complaint Management System
+# 📋 Samadhaan — Digital Complaint Management System
 
-![Samadhaan Banner](https://img.shields.io/badge/Project-Samadhaan-blue?style=for-the-badge&logo=react)
-![Status](https://img.shields.io/badge/Status-Complete-success?style=for-the-badge)
-![Tech Stack](https://img.shields.io/badge/Stack-MERN-blueviolet?style=for-the-badge)
+<p align="center">
+  <img src="https://img.shields.io/badge/Stack-MERN-6D28D9?style=for-the-badge&logo=mongodb&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB?style=for-the-badge&logo=react&logoColor=black"/>
+  <img src="https://img.shields.io/badge/Testing-Selenium%20%7C%20Mocha%20%7C%20TestNG-FF6C37?style=for-the-badge&logo=selenium"/>
+  <img src="https://img.shields.io/badge/Status-Complete-22C55E?style=for-the-badge"/>
+</p>
 
-**Samadhaan** is a comprehensive, full-stack Digital Complaint Management System designed to streamline the process of lodging, tracking, and resolving complaints efficiently. It provides a seamless experience for users to report issues and for administrators to manage them, all while incorporating smart features like AI-based complaint moderation.
+**Samadhaan** is a full-stack Digital Complaint Management System that allows users to submit, track, and manage complaints, while giving administrators complete control over resolution workflows — all on one centralized platform.
+
+> 🔗 **Live Repo:** [github.com/lavu-create/Samadhan](https://github.com/lavu-create/Samadhan)
+
+---
+
+## 📌 Table of Contents
+
+- [Problem Statement](#-problem-statement)
+- [Key Features](#-key-features)
+- [Tech Stack](#️-tech-stack)
+- [System Architecture](#️-system-architecture)
+- [Folder Structure](#-folder-structure)
+- [Setup & Installation](#-setup--installation)
+- [User Roles](#-user-roles)
+- [AI Spam Detection](#-ai-spam-detection)
+- [API Reference](#-api-reference)
+- [Automated Testing](#-automated-testing)
+- [TestNG Reports](#-testng-reports)
+- [Future Improvements](#-future-improvements)
+- [Contributors](#-contributors)
 
 ---
 
 ## 🎯 Problem Statement
-Organizations (such as colleges, societies, or corporations) often rely on manual, paper-based, or fragmented email systems for complaint management. This leads to lost tickets, lack of transparency, slow resolution times, and poor tracking. Furthermore, administrators often face an influx of spam or meaningless complaints, making it difficult to focus on genuine issues.
 
-**Samadhaan** solves this by providing a centralized digital platform with automated tracking, role-based dashboards, and AI-driven moderation to ensure only valid complaints reach the administration.
+Organizations — colleges, societies, IT helpdesks — still rely on fragmented email threads or paper-based processes for complaint handling. This creates lost tickets, lack of transparency, slow resolution, and an influx of spam complaints that bury legitimate ones.
+
+**Samadhaan** solves this with:
+- A centralized digital platform for logging and tracking complaints
+- Role-based dashboards for users and admins
+- Server-side AI-inspired spam filtering to reject meaningless submissions automatically
 
 ---
 
 ## ✨ Key Features
 
-- 🔐 **Secure Authentication**: User login and registration with encrypted passwords (bcrypt) and JWT-based session management.
-- 📝 **Smart Complaint Submission**: Submit categorized complaints with dynamic priority levels.
-- 🤖 **AI-Based Spam Detection**: Server-side validation mechanism that automatically rejects meaningless, repetitive, or spam descriptions to ensure system integrity.
-- 📊 **Interactive Dashboards**: 
-  - **User**: Personal complaint tracking table with real-time status updates.
-  - **Admin**: Comprehensive statistics, interactive charts (Chart.js), and workflow management.
-- 👤 **Profile Management**: Customizable user profiles with secure password change functionality.
-- export **Data Export**: Admins can export filtered complaint data into CSV format for offline reporting.
-- 🛡️ **Role-Based Access Control (RBAC)**: Strict segregation between `User` and `Admin` permissions.
+| Feature | Description |
+|---|---|
+| 🔐 **Secure Authentication** | JWT-based login/register with bcrypt password hashing |
+| 🛡️ **Role-Based Access Control** | Strict separation between `User` and `Admin` permissions |
+| 📝 **Complaint Submission** | Categorized complaints with priority, location, and optional photo attachments (up to 3) |
+| 🤖 **AI Spam Detection** | Server-side rule-based engine rejects meaningless or repetitive descriptions before saving |
+| 📊 **Admin Dashboard** | Statistics, Chart.js visualizations, status updates, CSV data export |
+| 🗂️ **User Dashboard** | Personal complaint table with real-time status and search/filter |
+| 👤 **Profile Management** | Update display name; profile photo upload stored via localStorage |
+| 📷 **Photo Attachments** | Capture via webcam or upload from device (max 3 images, 2MB each) |
+| 📍 **GPS Location** | Auto-detect current location for complaint geolocation tagging |
+| 🕵️ **Anonymous Submissions** | Users can submit complaints without revealing their identity |
+| 📁 **CSV Export** | Admins can export filtered complaint records to CSV |
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
-| Component | Technology | Description |
-| :--- | :--- | :--- |
-| **Frontend** | React (Vite), TypeScript, Tailwind CSS / Vanilla CSS | High-performance, responsive UI |
-| **Backend** | Node.js, Express.js | Scalable RESTful API architecture |
-| **Database** | MongoDB (Mongoose) | Flexible NoSQL database for structured data |
-| **Testing** | Selenium WebDriver, Mocha | End-to-End (E2E) automated testing |
-| **Security** | JWT, bcryptjs, CORS | Industry-standard security practices |
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 19, TypeScript, Vite, Material UI (MUI v7) |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB (via Mongoose) |
+| **Auth & Security** | JWT, bcryptjs, CORS |
+| **Charts** | Chart.js |
+| **E2E Testing** | Selenium WebDriver, Mocha, Chai |
+| **Java Testing** | TestNG 7.9, Selenium Java 4.18, WebDriverManager |
+| **Build & Reports** | Apache Maven, Apache ANT, XSLT |
 
 ---
 
 ## 🏗️ System Architecture
 
-The application follows a standard Client-Server architecture based on the MVC (Model-View-Controller) design pattern on the backend.
+```
+┌─────────────────────────┐         ┌──────────────────────────┐         ┌────────────┐
+│   React + Vite Frontend │ ──REST─▶ │  Node.js + Express API   │ ──ORM──▶ │  MongoDB   │
+│   (localhost:5173)      │ ◀──JSON── │  (localhost:5001)        │         │  (Atlas)   │
+└─────────────────────────┘         └──────────────────────────┘         └────────────┘
+                                              │
+                                    ┌─────────┴────────┐
+                                    │  spamDetector.js │
+                                    │  (AI filter)     │
+                                    └──────────────────┘
+```
 
-1. **Frontend (Client)**: Built with React, handles the User Interface and Client-side routing. It communicates with the backend via RESTful APIs using standard HTTP requests. State is managed seamlessly for a smooth UX.
-2. **Backend (Server)**: Built with Node.js and Express. Handles business logic, authentication, AI spam validation, and data processing.
-3. **Database (Storage)**: MongoDB stores user profiles and complaint records securely.
+The backend follows an **MVC pattern**:
+- **Models** — Mongoose schemas for `User` and `Complaint`
+- **Controllers** — Business logic including spam check, RBAC enforcement
+- **Routes** — Express routers with `express-validator` middleware
 
-```text
-[ React Frontend ] <--- JSON via REST API ---> [ Node.js + Express Backend ] <--- Mongoose ---> [ MongoDB ]
+---
+
+## 📁 Folder Structure
+
+```
+Samadhaan/
+├── backend/                    # Node.js + Express API
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── utils/
+│       └── spamDetector.js     # AI-inspired spam detection engine
+├── frontend-new/               # React + Vite frontend
+│   └── src/
+│       ├── components/
+│       ├── context/            # AuthContext (JWT + profilePic sync)
+│       ├── pages/
+│       └── theme/
+├── e2e-tests/                  # Selenium + Mocha E2E tests
+│   └── tests/
+│       └── basic.spec.js
+└── testng-reports-demo/        # Java TestNG suite (lab report demo)
+    ├── src/test/java/
+    │   └── SamadhaanTest.java
+    ├── pom.xml
+    ├── testng.xml
+    ├── build.xml
+    └── testng-results.xsl
 ```
 
 ---
 
-## 🚀 Setup Instructions
+## 🚀 Setup & Installation
 
 ### Prerequisites
-- **Node.js**: v14 or higher
-- **MongoDB**: Local installation or MongoDB Atlas URI
-- **Google Chrome**: For running Selenium E2E tests
 
-### 1. Backend Setup
+| Tool | Version | Notes |
+|---|---|---|
+| Node.js | v18+ | [nodejs.org](https://nodejs.org) |
+| MongoDB | Atlas or local | Atlas URI in `.env` |
+| Java JDK | 11+ | For TestNG suite only |
+| Maven | 3.6+ | For TestNG suite only |
+| ANT | 1.10+ | For XSLT report only |
+| Google Chrome | Latest | Selenium tests |
+
+---
+
+### 1. Clone the Repository
+
 ```bash
-# Navigate to the backend directory
+git clone https://github.com/lavu-create/Samadhan.git
+cd Samadhan
+```
+
+### 2. Backend Setup
+
+```bash
 cd backend
-
-# Install dependencies
 npm install
-
-# Configure environment variables
-cp .env.example .env
-# Edit .env and set your PORT, MONGO_URI, and JWT_SECRET
-
-# Start the development server
-npm run dev
 ```
 
-### 2. Frontend Setup
+Create your `.env` file:
+
+```env
+PORT=5001
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_jwt_secret_key
+JWT_REFRESH_SECRET=your_refresh_secret_key
+NODE_ENV=development
+```
+
+Start the backend:
+
 ```bash
-# Open a new terminal and navigate to the frontend directory
+npm start
+# API running at http://localhost:5001
+```
+
+### 3. Frontend Setup
+
+```bash
 cd frontend-new
-
-# Install dependencies
 npm install
-
-# Start the Vite development server
 npm run dev
+# App running at http://localhost:5173
 ```
-The frontend will typically run at `http://localhost:5173`.
 
-### 3. Running Selenium E2E Tests
+---
+
+## 👥 User Roles
+
+### 👤 User
+- Register and log in
+- Submit complaints with category, priority, location, and optional photo attachments
+- Track status of their own complaints in real-time
+- Edit profile name and photo
+- Submit anonymously if needed
+
+### 🔧 Admin
+- View and manage all complaints from all users
+- Update complaint status (`Pending` → `In Progress` → `Resolved`) and assign a handler
+- Access dashboard charts showing category/status distribution
+- Export complaints to CSV
+- Cannot be registered through the normal flow — admin accounts are seeded via `backend/utils/seedAdmin.js`
+
+---
+
+## 🤖 AI Spam Detection
+
+All complaint descriptions pass through `backend/utils/spamDetector.js` **before** being saved to the database. If spam is detected, the server responds with `HTTP 400` and the complaint is discarded.
+
+### Detection Rules
+
+| Rule | Example Caught |
+|---|---|
+| Too short (< 15 characters) | `"ok"`, `"test"` |
+| Single repeated character | `"aaaaaaaaaaaaa"` |
+| All words identical | `"random random random"` |
+| Only spam/test words | `"asdf asdf asdf"`, `"dummy complaint"` |
+| Keyboard mash patterns | `"qwertyuiop"`, `"asdfghjkl"` |
+| Low unique-word ratio | Highly repetitive phrases |
+| Banned phrase list | `"test test test"`, `"hello hello hello"` |
+
+### API Response on Spam
+
+```json
+{
+  "success": false,
+  "message": "Complaint rejected: Please enter a meaningful complaint description."
+}
+```
+
+Valid complaints like *"WiFi is not working in Computer Lab since morning"* pass all rules and are saved normally.
+
+---
+
+## 🔌 API Reference
+
+### Authentication
+| Method | Endpoint | Access | Description |
+|---|---|---|---|
+| `POST` | `/api/auth/register` | Public | Register new user |
+| `POST` | `/api/auth/login` | Public | Login and receive JWT |
+| `GET` | `/api/auth/me` | Private | Get current user info |
+
+### Complaints
+| Method | Endpoint | Access | Description |
+|---|---|---|---|
+| `POST` | `/api/complaints` | User | Submit complaint (spam check applied) |
+| `GET` | `/api/complaints/my` | User | Get own complaints |
+| `GET` | `/api/complaints` | Admin | Get all complaints |
+| `PATCH` | `/api/complaints/:id/status` | Admin | Update status / assign handler |
+
+### Profile
+| Method | Endpoint | Access | Description |
+|---|---|---|---|
+| `GET` | `/api/profile/me` | Private | Get profile |
+| `PUT` | `/api/profile/update` | Private | Update name |
+
+### Admin / Stats / Export
+| Method | Endpoint | Access | Description |
+|---|---|---|---|
+| `GET` | `/api/stats` | Admin | Dashboard statistics |
+| `GET` | `/api/export/csv` | Admin | Export complaints as CSV |
+
+---
+
+## 🧪 Automated Testing
+
+### Selenium + Mocha E2E Tests
+
+The `e2e-tests/` folder contains a Selenium WebDriver + Mocha test suite covering the full user journey.
+
+**Test Cases:**
+| # | Test | Expected |
+|---|---|---|
+| 1 | `/dashboard` without login | Redirects to `/login` |
+| 2 | `/profile` without login | Redirects to `/login` |
+| 3 | Login as User | Lands on `/dashboard` |
+| 4 | Valid complaint submission | Success alert visible |
+| 5 | Logout | Clears token, redirects to `/` |
+| 6 | Spam complaint submission | Backend rejects with error alert |
+| 7 | Login as Admin | Lands on `/admin` |
+
+**Run the tests:**
+
 ```bash
-# Navigate to the testing directory
-cd e2e-tests
+# Ensure frontend (port 5173) and backend (port 5001) are running first
 
-# Install testing dependencies
+cd e2e-tests
 npm install
 
-# Run the test suite (Make sure frontend and backend are running!)
+# Run headless (CI mode)
 npm test
+
+# Run with credentials (configurable)
+TEST_USER_EMAIL='user@example.com' \
+TEST_USER_PASSWORD='yourpassword' \
+npm test
+
+# Run with visible browser (demo mode)
+DEMO=true npm test
 ```
 
 ---
 
-## 🔌 Core API Endpoints
+## 📊 TestNG Reports
 
-A fully-documented REST API powers the platform. Here are the core endpoints:
+The `testng-reports-demo/` folder contains a separate **Java + Maven + TestNG** test suite for generating lab-standard test reports. It does **not** modify the main application.
 
-**Authentication**
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Authenticate a user and receive a JWT
+### TestNG Test Cases
 
-**Complaints**
-- `POST /api/complaints` - Submit a new complaint (Includes AI Spam Check)
-- `GET /api/complaints/my` - Fetch logged-in user's complaints
-- `GET /api/complaints` - Fetch all complaints (Admin Only)
-- `PATCH /api/complaints/:id/status` - Update complaint status (Admin Only)
+| # | Method | Expected |
+|---|---|---|
+| TC-01 | `testHomepageLoads` | Page source contains "samadhaan" |
+| TC-02 | `testLoginPageRenders` | Email input visible on `/login` |
+| TC-03 | `testDashboardRedirectsToLogin` | `/dashboard` → `/login` |
+| TC-04 | `testProfileRedirectsToLogin` | `/profile` → `/login` |
+| TC-05 | `testIntentionalFailForDemoReport` | ❌ FAIL (intentional, for report demo) |
 
-**Profile**
-- `GET /api/profile/me` - Fetch profile details
-- `PUT /api/profile/update` - Update profile information
+### Run TestNG Tests
+
+```bash
+# Ensure frontend is running at localhost:5173
+
+cd testng-reports-demo
+mvn test
+```
+
+### Generated Reports
+
+| Report | Location | Description |
+|---|---|---|
+| **Emailable Report** | `target/surefire-reports/emailable-report.html` | Compact single-file HTML report, ready to email |
+| **Index Report** | `target/surefire-reports/index.html` | Full TestNG HTML report with suite breakdown |
+| **XSLT Report** | `target/surefire-reports/XSLT_Report.html` | Custom styled report (generated via ANT) |
+
+### Generate XSLT Report via ANT
+
+After running `mvn test`:
+
+```bash
+ant report
+# Output: target/surefire-reports/XSLT_Report.html
+```
+
+The XSLT report displays Total / Passed / Failed / Skipped counts in summary cards with a full test-method table — styled using a custom dark-themed XSL stylesheet (`testng-results.xsl`).
 
 ---
 
-## 🎓 Conclusion
-Samadhaan successfully demonstrates a production-ready, full-stack application. It implements modern web development practices, robust security measures, and innovative features like automated E2E testing and AI-driven spam validation. It is fully prepared for real-world deployment in universities, housing societies, or corporate IT helpdesks.
+## 🔮 Future Improvements
+
+- [ ] Email notifications to users when complaint status changes
+- [ ] Admin-to-user chat / comment thread on complaints
+- [ ] Mobile app (React Native) for on-the-go submission
+- [ ] OCR-based attachment text extraction for richer spam detection
+- [ ] Multi-language (i18n) support
+- [ ] Dockerized deployment with `docker-compose`
 
 ---
-*Developed for evaluation and lab submission.*
+
+## 👨‍💻 Contributors
+
+| Name | Role |
+|---|---|
+| **Lavanya** | Full-Stack Developer — Frontend, Backend, Testing, Reports |
+
+---
+
+<p align="center">
+  Built with ❤️ as a full-stack portfolio project · <a href="https://github.com/lavu-create/Samadhan">github.com/lavu-create/Samadhan</a>
+</p>
