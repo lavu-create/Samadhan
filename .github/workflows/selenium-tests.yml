@@ -28,14 +28,14 @@ jobs:
         working-directory: e2e-tests
         run: npm install
 
-      # 🔥 Start backend FIRST
+      # Start backend
       - name: Start backend
         working-directory: backend
         run: npm start &
 
-      # 🔥 Wait for backend
+      # Wait for backend (PORT 5001)
       - name: Wait for backend
-        run: npx wait-on http://127.0.0.1:5000
+        run: npx wait-on http://127.0.0.1:5001
 
       # Start frontend
       - name: Start frontend
