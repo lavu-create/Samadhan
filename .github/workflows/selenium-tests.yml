@@ -44,7 +44,7 @@ jobs:
 
       # Wait for frontend
       - name: Wait for frontend
-        run: npx wait-on http://127.0.0.1:5173
+        run: npx wait-on http://localhost:5173/Samadhan/
 
       # Run tests
       - name: Run tests
