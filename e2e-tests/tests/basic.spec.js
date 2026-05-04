@@ -60,7 +60,7 @@ async function loginAs(driver, baseUrl, email, password, role = 'User') {
 
 describe('Samadhaan Auth & Dashboard Automation', function () {
   let driver;
-  const BASE_URL = 'http://localhost:5173';
+  const BASE_URL = "http://localhost:5173/Samadhan";
 
   before(async function () {
     this.timeout(30000);
