@@ -9,7 +9,7 @@
 
 **Samadhaan** is a full-stack Digital Complaint Management System that allows users to submit, track, and manage complaints, while giving administrators complete control over resolution workflows — all on one centralized platform.
 
-> 🔗 **Live Repo:** [github.com/lavu-create/Samadhan](https://github.com/lavu-create/Samadhan)
+> 🔗 **Live link:** [lavu-create.github.io/Samadhan/](https://lavu-create.github.io/Samadhan/)
 
 ---
 
