@@ -1,5 +1,5 @@
 import type { FC, ReactElement } from 'react';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Box, CircularProgress } from '@mui/material';
 import Navbar from './components/Navbar';

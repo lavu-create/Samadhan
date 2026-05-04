@@ -52,10 +52,3 @@ export default function ToastManager() {
             style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 16, lineHeight: 1 }}
             aria-label="Close"
           >
-            ×
-          </button>
-        </div>
-      ))}
-    </div>
-  );
-}

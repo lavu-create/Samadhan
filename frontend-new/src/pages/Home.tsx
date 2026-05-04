@@ -27,7 +27,6 @@ import {
   Layers3,
   Navigation,
   Globe2,
-  Github,
 } from 'lucide-react';
 
 type MapLocation = {
@@ -75,7 +74,6 @@ const toMapLink = (lat: number, lon: number) =>
   `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=17/${lat}/${lon}`;
 
 const heroImage = '/campus.jpeg';
-const profileImage = '/rahul.jpg';
 
 const Home: React.FC = () => {
   const { user } = useAuth();

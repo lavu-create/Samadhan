@@ -18,14 +18,13 @@ import {
   CircularProgress,
   IconButton,
   InputAdornment,
-  Tooltip,
   Stack,
   FormControlLabel,
   Switch,
   ListSubheader,
 } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
-import { Search, PlusCircle, RefreshCw, Camera, Upload, X, MapPin, Navigation } from 'lucide-react';
+import { Search, PlusCircle, RefreshCw, Camera, Upload, X, MapPin } from 'lucide-react';
 import api from '../services/api';
 import type { Complaint } from '../types';
 
@@ -105,13 +104,9 @@ const UserDashboard: React.FC = () => {
   const [location, setLocation] = useState('');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [gpsLoading, setGpsLoading] = useState(false);
-  const [gpsError, setGpsError] = useState('');
-  const [gpsCoords, setGpsCoords] = useState<{ lat: number; lon: number } | null>(null);
   const [gpsSupported, setGpsSupported] = useState(true);
   const [attachments, setAttachments] = useState<File[]>([]);
   const [attachmentPreviews, setAttachmentPreviews] = useState<string[]>([]);
-  const [attachmentError, setAttachmentError] = useState('');
-  const [cameraError, setCameraError] = useState('');
   const [cameraOpen, setCameraOpen] = useState(false);
   const [cameraSupported, setCameraSupported] = useState(true);
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
@@ -157,12 +152,12 @@ const UserDashboard: React.FC = () => {
 
       if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         setCameraSupported(false);
-        setCameraError('Camera is not supported on this device/browser.');
+        // setCameraError('Camera is not supported on this device/browser.');
         setCameraOpen(false);
         return;
       }
 
-      setCameraError('');
+      // setCameraError('');
 
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -175,7 +170,7 @@ const UserDashboard: React.FC = () => {
           videoRef.current.srcObject = stream;
         }
       } catch (err) {
-        setCameraError('Unable to access camera. Please allow camera permissions.');
+        // setCameraError('Unable to access camera. Please allow camera permissions.');
         setCameraOpen(false);
       }
     };
@@ -239,7 +234,7 @@ const UserDashboard: React.FC = () => {
       attachmentPreviews.forEach((url) => URL.revokeObjectURL(url));
       setAttachments([]);
       setAttachmentPreviews([]);
-      setAttachmentError('');
+      // setAttachmentError('');
       fetchComplaints();
     } catch (err: any) {
       const apiError = err.response?.data;
@@ -277,10 +272,10 @@ const UserDashboard: React.FC = () => {
   };
 
   const handleUseGps = () => {
-    setGpsError('');
+    // setGpsError('');
     if (!navigator.geolocation) {
       setGpsSupported(false);
-      setGpsError('GPS is not supported on this device/browser.');
+      // setGpsError('GPS is not supported on this device/browser.');
       return;
     }
 
@@ -289,12 +284,12 @@ const UserDashboard: React.FC = () => {
       (position) => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        setGpsCoords({ lat, lon });
+        // setGpsCoords({ lat, lon });
         setLocation(`GPS: ${lat.toFixed(5)}, ${lon.toFixed(5)}`);
         setGpsLoading(false);
       },
-      (err) => {
-        setGpsError(err.message || 'Unable to access GPS location.');
+      (_err) => {
+        // setGpsError(err.message || 'Unable to access GPS location.');
         setGpsLoading(false);
       },
       {
@@ -306,22 +301,22 @@ const UserDashboard: React.FC = () => {
   };
 
   const addAttachments = (files: File[]) => {
-    setAttachmentError('');
+    // setAttachmentError('');
 
     const nextFiles = [...attachments];
     const nextPreviews = [...attachmentPreviews];
 
     for (const file of files) {
       if (!file.type.startsWith('image/')) {
-        setAttachmentError('Only image files are allowed.');
+        // setAttachmentError('Only image files are allowed.');
         continue;
       }
       if (file.size > MAX_ATTACHMENT_SIZE) {
-        setAttachmentError('Each image must be under 2MB.');
+        // setAttachmentError('Each image must be under 2MB.');
         continue;
       }
       if (nextFiles.length >= MAX_ATTACHMENTS) {
-        setAttachmentError(`Maximum ${MAX_ATTACHMENTS} images allowed.`);
+        // setAttachmentError(`Maximum ${MAX_ATTACHMENTS} images allowed.`);
         break;
       }
 
@@ -345,7 +340,7 @@ const UserDashboard: React.FC = () => {
     if (!videoRef.current) return;
 
     if (attachments.length >= MAX_ATTACHMENTS) {
-      setAttachmentError(`Maximum ${MAX_ATTACHMENTS} images allowed.`);
+      // setAttachmentError(`Maximum ${MAX_ATTACHMENTS} images allowed.`);
       return;
     }
 

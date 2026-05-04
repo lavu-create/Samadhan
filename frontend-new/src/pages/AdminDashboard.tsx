@@ -21,9 +21,7 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
   TextField,
-  Divider,
 } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { alpha, useTheme } from '@mui/material/styles';
@@ -358,7 +356,7 @@ const AdminDashboard: React.FC = () => {
                       cursor={{ fill: '#f8fafc' }}
                     />
                     <Bar dataKey="value" radius={[4, 4, 0, 0]} barSize={22}>
-                      {chartData.map((entry, index) => (
+                      {chartData.map((_, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                       ))}
                     </Bar>
