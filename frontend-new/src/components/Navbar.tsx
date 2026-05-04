@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/');
+    navigate('/dashboard');
   };
 
   const isAdmin = user?.role === 'Admin';
